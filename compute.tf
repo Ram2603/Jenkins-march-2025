@@ -25,6 +25,7 @@ resource "aws_instance" "jenkins-instance" {
   ami           = data.aws_ami.amazon-linux-3.id
   instance_type = var.instance_type
   key_name      = var.keyname
+  count = var.instance_count
   user_data     = file("install_jenkins.sh")
 
   associate_public_ip_address = true
